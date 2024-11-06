@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
     <title>Academic Dishonesty - The Game</title>
+
+    <!-- Styles for layout and game display -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background: #000;
+            color: #cccccc;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0;
-            padding: 20px;
         }
+
         h1 {
-            text-align: center;
-        }
-        #game-container {
-            width: 800px;
-            height: 600px;
-            border: 2px solid #333;
-            margin: 20px 0;
-        }
-        .signup-container {
-            text-align: center;
+            color: #00ff00;
             margin-top: 20px;
         }
+
+        #game-container {
+            width: 100%;
+            max-width: 1920px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        canvas {
+            image-rendering: optimizeSpeed;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .signup-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
         .signup-container input {
             padding: 10px;
             font-size: 16px;
             margin: 5px;
         }
+
         .signup-container button {
             padding: 10px 20px;
             font-size: 16px;
@@ -38,16 +64,21 @@
         }
     </style>
 </head>
-<body>
 
+<body>
     <h1>Academic Dishonesty - The Game</h1>
 
     <!-- Game Embed Section -->
     <div id="game-container">
-        <!-- Run the game code -->
-        <script type="text/javascript" src="html5game/ACADEMIC DISHONESTY 11_3_24.js?cachebust=1564895686"></script>
-        <script>window.onload = GameMaker_Init;</script>
+        <!-- Canvas element the game draws to -->
+        <canvas id="canvas" width="1920" height="1080">
+            <p>Your browser doesn't support HTML5 canvas.</p>
+        </canvas>
     </div>
+
+    <!-- Run the game code -->
+    <script type="text/javascript" src="html5game/ACADEMIC DISHONESTY 11_3_24.js?cachebust=1564895686"></script>
+    <script>window.onload = GameMaker_Init;</script>
 
     <!-- Email Signup Form -->
     <div class="signup-container">
@@ -59,14 +90,12 @@
     </div>
 
     <script>
-        // JavaScript function for form submission
+        // JavaScript function for handling form submission
         function submitForm() {
             const email = document.getElementById("email").value;
             alert(`Thank you for signing up, ${email}!`);
-            // Here, you would typically send the email to a server or service.
-            return false; // Prevent actual form submission
+            return false; // Prevents actual form submission
         }
     </script>
-
 </body>
 </html>
